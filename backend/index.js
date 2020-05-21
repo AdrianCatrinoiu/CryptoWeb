@@ -43,6 +43,7 @@ app.get("/crypto", (req, res) => {
 app.get("*", (req, res) => {
   res.status(404).sendFile(__dirname + "/Error/Error.html");
 });
+
 app.post("/register", (req, res) => {
   console.log("a mers nodemon");
   console.log("req:" + JSON.stringify(req.body));
@@ -57,7 +58,7 @@ app.post("/register", (req, res) => {
   };
 
   addNewUser = (newUserData) => {
-    userList.push({ newUserData });
+    userList.push(newUserData);
     fs.writeFile("./databases/users.json", JSON.stringify(userList), (err) => {
       if (err) console.log("->> eroare: " + err);
       console.log("-> success");
@@ -69,6 +70,30 @@ app.post("/register", (req, res) => {
   res.json({
     type: "success",
   });
+});
+
+app.post("/loginCheck", (req, res) => {
+  const { username, password } = req.body;
+
+  let message = { message: "Cont inexistent" };
+  if (!username) {
+    message = { message: "Username lipsa" };
+  }
+  if (!password) {
+    message = { message: "Parola lipsa" };
+  }
+  console.log("login2");
+  let userList = JSON.parse(fs.readFileSync("./databases/users.json", "utf8"));
+  console.log("users: " + JSON.stringify(userList));
+  let userExists = false;
+
+  userList.forEach((user) => {
+    if (user.username == username && user.password == password) {
+      message = { message: "Succes" };
+    }
+  });
+
+  return res.json(message);
 });
 
 app.listen(3000, () => {

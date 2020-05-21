@@ -1,33 +1,56 @@
-function updateTextInput(val) {
-  document.getElementById("age").value = val;
-}
-function getUserData() {
-  let username = document.getElementById("username").value;
-  console.log(username);
-  let email = document.getElementById("email").value;
-  console.log(email);
-  let password = document.getElementById("password").value;
-  console.log(password);
-  let experience = document.getElementById("experience").value;
-  console.log(experience);
-  let gender = Array.from(document.getElementsByName("gender")).find(
-    (r) => r.checked
-  ).value;
+const baseUrl = "http://localhost:3000";
 
-  let age = document.getElementById("age").value;
-  console.log(age);
-  alert("The value of the radio button is: " + gender);
-  document.getElementById("demouser").innerHTML = "Nume:" + username;
-  document.getElementById("demoemail").innerHTML = email;
-  document.getElementById("demoparola").innerHTML = password;
-  document.getElementById("demoexp").innerHTML = experience;
-  document.getElementById("demosex").innerHTML = gender;
-  document.getElementById("demovarsta").innerHTML = age;
-}
+//Afiseaza ora actuala
 var myVar = setInterval(myTimer, 1000);
 
 function myTimer() {
   var d = new Date();
   var t = d.toLocaleTimeString();
   document.getElementById("timp").innerHTML = t;
+}
+
+async function getUserData() {
+  let username = document.getElementById("username").value;
+  console.log(username);
+
+  let password = document.getElementById("password").value;
+  console.log(password);
+
+  const loginData = {
+    username,
+    password,
+  };
+
+  const loginResponse = await postData("/loginCheck", loginData);
+  console.log(loginResponse);
+  switch (loginResponse.message) {
+    case "Succes":
+      alert("succes");
+      localStorage.setItem("isLoggedIn", "True");
+      localStorage.setItem("LoggedInUsername", username);
+      window.location.href = "http://localhost:3000/Home";
+      break;
+    case "Cont inexistent":
+      alert("Cont inexistent");
+      break;
+    case "Username lipsa":
+      alert("Va rugam introduceti un username");
+      break;
+    case "Parola lipsa":
+      alert("Va rugam introduceti o parola");
+      break;
+  }
+}
+
+async function postData(path, data) {
+  console.log("login");
+  const result = await fetch(baseUrl + path, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return result.json();
 }

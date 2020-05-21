@@ -11,16 +11,6 @@ function initfavorite() {
   });
 }
 
-function compare(a, b) {
-  const valueA = a.value;
-  const valueB = b.value;
-  let comparison = 0;
-  if (valueA > valueB) {
-    comparison = 1;
-  } else if (valueA < valueB) {
-    comparison = -1;
-  }
-}
 //afiseaza cryptomonede
 
 document.getElementById("getCrypto").addEventListener("click", getCrypto);
@@ -117,3 +107,5 @@ function updateTextInput(val, cost, id) {
   document.getElementById(id).value =
     "Numar Monede:" + val + " Cost Total:" + val * cost;
 }
+
+//localstorage pentru favorit

@@ -1,13 +1,20 @@
 [
   {
-    "newUserData": {
-      "id": "oxo57wjxv13n68oatqrj9rz31gmpiw8c",
-      "username": "ADRIAN.CATRINOIU",
-      "email": "ady.catrinoiu@gmail.coma",
-      "password": "asDE12.,",
-      "experience": "fara_experienta",
-      "gender": "male",
-      "age": "47"
-    }
+    "id": "87r938g45t5qox7205yq6kmffboh7yks",
+    "username": "itsbogdann",
+    "email": "asd@yahoo.com",
+    "password": "asD12.,asD",
+    "experience": "fara_experienta",
+    "gender": "male",
+    "age": "79"
+  },
+  {
+    "id": "9zusrfvd1fnwxulkvq659t4zin0ni0ug",
+    "username": "ADRIAN.CATRINOIU",
+    "email": "ady.catrinoiu@gmail.com",
+    "password": "asd",
+    "experience": "fara_experienta",
+    "gender": "male",
+    "age": "79"
   }
 ]
