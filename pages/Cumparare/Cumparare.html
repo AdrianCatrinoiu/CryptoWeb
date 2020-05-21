@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Cumparare.css" />
+    <link rel="stylesheet" type="text/css" href="meniu.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+
+<body>
+    <ul>
+
+        <li class="dropdown" onclick="menu_dropdown()">
+            <div id="navbar_left"></div>
+            <div class="dropbtn">
+                <div class="icon_menu" id="iconmenu">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="http://127.0.0.1:5500/pages/Cumparare/Cumparare.html#" class="active">Cumparare</a>
+                    <a href="http://127.0.0.1:5500/pages/Cumparare/Vanzare.html#">Vanzare</a>
+                    <button onclick="darkMode()">Dark Mode</button>
+                </div>
+            </div>
+        </li>
+
+
+        <li>
+            <div id="navbar_center">
+                <a href="http://127.0.0.1:5500/pages/Home/Home.html#">
+                    <i class="material-icons" id="icon_casa">Home</i>
+                </a>
+            </div>
+        </li>
+        <li id="navbar_right">
+            <div>
+                <a href="http://127.0.0.1:5500/pages/Login/Login.html#">Login</a>
+                <a href="http://127.0.0.1:5500/pages/Register/Register.html#">Register</a>
+            </div>
+        </li>
+
+    </ul>
+    <div id="CryptoCurrency">
+        <button id="getCrypto">Get Crypto</button>
+    </div>
+
+
+
+    <script src="meniu.js"></script>
+    <script src="Cumparare.js"></script>
+</body>
+
+
+
+
+
+</html>

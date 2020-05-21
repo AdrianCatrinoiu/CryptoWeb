@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Bitcoin",
+    "value": 5500,
+    "available": 1200000
+  },
+  {
+    "id": 2,
+    "name": "Ripple",
+    "value": 0.92,
+    "available": 250000000
+  },
+  {
+    "id": 3,
+    "name": "Ethereum",
+    "value": 1200,
+    "available": 7000000
+  }
+]

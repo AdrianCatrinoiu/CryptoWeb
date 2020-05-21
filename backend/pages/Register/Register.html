@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="meniu.css" />
+    <link rel="stylesheet" type="text/css" href="register.css" />
+</head>
+
+
+
+<body>
+    <ul>
+
+        <li class="dropdown" onclick="menu_dropdown()">
+            <div id="navbar_left"></div>
+            <div class="dropbtn">
+                <div class="icon_menu" id="iconmenu">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/Cumparare">Cumparare</a>
+                    <a href="/Vanzare">Vanzare</a>
+                    <button onclick="darkMode()">Dark Mode</button>
+                </div>
+            </div>
+        </li>
+
+
+        <li>
+            <div id="navbar_center">
+                <a href="/Home">
+                    <i class=" material-icons" id="icon_casa">Home</i>
+                </a>
+            </div>
+        </li>
+        <li id="navbar_right">
+            <div>
+                <a href="/Login">Login</a>
+                <a href="/Register" class="active">Register</a>
+            </div>
+        </li>
+
+    </ul>
+    <div id="timp"></div>
+    <div class="formular">
+
+        <form id="form2">
+
+            <div class="item-flex">
+                <div class="label-container">
+                    <label for="username">Nume Utilizator:</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="username" name="username"><br><br>
+                </div>
+            </div>
+
+            <div class="item-flex">
+                <div class="label-container">
+                    <label for="email">E-mail:</label>
+                </div>
+                <div class="input-container">
+                    <input type="email" id="email" name="email"><br><br>
+                </div>
+            </div>
+
+            <div class="item-flex">
+                <div class="label-container">
+                    <label for="password">Parola:</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" name="password"><br><br>
+                </div>
+            </div>
+
+            <div class="item-flex">
+                <div class="label-container">
+                    <label for="experience">Experienta in domeniu:</label>
+
+                </div>
+                <div class="input-container">
+                    <select id="experience">
+                        <option value="fara_experienta">Fara experienta</option>
+                        <option value="putina_experienta">Putina experienta</option>
+                        <option value="multa_experienta">Multa experienta</option>
+                    </select><br><br>
+                </div>
+            </div>
+
+            <div class="item-flex">
+                <div class="label-container">
+                    <label for="gender">Sex:</label>
+                </div>
+                <div class="input-container">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Barbat</label><br>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Femeie</label><br>
+                </div>
+            </div>
+
+            <div class="item-flex">
+                <div class="label-container">
+                    <label for="age">Varsta(18-100):</label>
+                </div>
+                <div class="input-container">
+                    <input type="range" name="ageInput" min="18" max="100"
+                        onchange="updateTextInput(this.value);"><br><br>
+                    <input type="text" id="age" value="">
+                </div>
+            </div>
+            <br>
+            <div class="item-flex">
+                <div class="label-container">
+                    <label for="terms">Bifand aceasta casuta acceptati termenii si conditiile:</label>
+                </div>
+                <div class="input-container">
+                    <input type="checkbox" id="terms" name="password"><br><br>
+                </div>
+            </div>
+
+            <div class="input-button">
+                <input type="button" value="Submit" class="submitbtn" onclick="getUserData()"><br><br>
+            </div>
+
+
+
+        </form>
+
+    </div>
+
+
+
+    <script src="meniu.js"></script>
+    <script src="register.js"></script>
+</body>
+
+
+
+
+
+</html>

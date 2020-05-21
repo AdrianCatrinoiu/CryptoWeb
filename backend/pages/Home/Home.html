@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="meniu.css" />
+</head>
+
+
+
+<body>
+    <ul>
+
+        <li class="dropdown" onclick="menu_dropdown()">
+            <div id="navbar_left"></div>
+            <div class="dropbtn">
+                <div class="icon_menu" id="iconmenu">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/Cumparare">Cumparare</a>
+                    <a href="/Vanzare">Vanzare</a>
+                    <button onclick="darkMode()">Dark Mode</button>
+                </div>
+            </div>
+        </li>
+
+
+        <li>
+            <div id="navbar_center">
+                <a href="/Home" class="active">
+                    <i class=" material-icons" id="icon_casa">Home</i>
+                </a>
+            </div>
+        </li>
+        <li id="navbar_right">
+            <div>
+                <a href="/Login">Login</a>
+                <a href="/Register">Register</a>
+            </div>
+        </li>
+
+    </ul>
+    <div id="timp"></div>
+
+
+    <script src="meniu.js"></script>
+    <script src="Home.js"></script>
+</body>
+
+
+
+
+
+</html>
