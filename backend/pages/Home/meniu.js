@@ -26,3 +26,22 @@ function myTimer() {
   var t = d.toLocaleTimeString();
   document.getElementById("timp").innerHTML = t;
 }
+
+function verificareLogin() {
+  let isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  if (isLoggedIn && isLoggedIn == "True") {
+    document.querySelector("#login-button").innerHTML = "Log Out";
+  }
+}
+verificareLogin();
+
+function authCheck() {
+  const button_text = document.querySelector("#login-button").innerHTML;
+  console.log("a mers123");
+  if (button_text == "Log Out") {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("LoggedInUsername");
+    localStorage.removeItem("listaFavorit");
+  }
+}

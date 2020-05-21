@@ -1,22 +1,45 @@
+let listaFavorit = JSON.parse(localStorage.getItem("listaFavorit")) || [];
 function initfavorite() {
   const starsArray = document.querySelectorAll(".fa-star");
 
-  console.log(document.querySelectorAll(".fa-star"));
-
   starsArray.forEach((star) => {
+    listaFavorit.forEach((element) => {
+      if (star.getAttribute("name") == element) {
+        console.log(star.getAttribute("name"));
+        star.classList.toggle("favourite");
+      }
+    });
+
     star.addEventListener("click", function () {
-      console.log("DAS");
+      listaFavorit = JSON.parse(localStorage.getItem("listaFavorit")) || [];
+      if (star.getAttribute("class") == "fa fa-star") {
+        console.log("s-a activat");
+        listaFavorit.push(star.getAttribute("name"));
+        console.log(listaFavorit);
+        localStorage.setItem("listaFavorit", JSON.stringify(listaFavorit));
+      }
+      if (star.getAttribute("class") == "fa fa-star favourite") {
+        console.log("s-a dezactivat");
+        listaFavorit = arrayRemove(listaFavorit, star.getAttribute("name"));
+        console.log(listaFavorit);
+        localStorage.setItem("listaFavorit", JSON.stringify(listaFavorit));
+      }
+
       star.classList.toggle("favourite");
     });
   });
 }
-
+function arrayRemove(arr, value) {
+  return arr.filter(function (ele) {
+    return ele != value;
+  });
+}
 //afiseaza cryptomonede
 
 document.getElementById("getCrypto").addEventListener("click", getCrypto);
 const container = document.querySelector("#CryptoCurrency");
 const subcontainer = document.querySelector("#subcontainer");
-
+//functie care afiseaza cryptomonede in ordinea din json
 function getCrypto() {
   fetch("/crypto")
     .then(function (res) {
@@ -27,7 +50,7 @@ function getCrypto() {
         const tempCrypto = `<div id="crypto-div" data-id=${crypto.id}>  
             <ul class="crypto-ul">
             
-                <li id="listacrypto">Cryptomoneda: ${crypto.name}   </li> <i class="fa fa-star" ></i> 
+                <li id="listacrypto">Cryptomoneda: ${crypto.name}   </li> <i class="fa fa-star" name=${crypto.name}></i> 
                 <br><br>
                 <li id="listacrypto">Value: ${crypto.value}</li>
                 <br><br>
@@ -46,13 +69,14 @@ function getCrypto() {
 
         subcontainer.insertAdjacentHTML("beforeend", tempCrypto);
       });
+
       initfavorite();
     });
 
   let buttoncrypto = document.getElementById("getCrypto");
   buttoncrypto.style.display = "none";
 }
-
+//functie care afiseaza cryptomonede dupa criteriul de sortare selectat
 function getCryptoCrescator() {
   var selectBox = document.getElementById("selectBox");
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
@@ -79,7 +103,7 @@ function getCryptoCrescator() {
         const tempCrypto = `<div id="crypto-div" data-id=${crypto.id}>  
             <ul class="crypto-ul">
             
-                <li id="listacrypto">Cryptomoneda: ${crypto.name}   </li> <i class="fa fa-star" ></i> 
+                <li id="listacrypto">Cryptomoneda: ${crypto.name}   </li> <i class="fa fa-star" name=${crypto.name} ></i> 
                 <br><br>
                 <li id="listacrypto">Value: ${crypto.value}</li>
                 <br><br>
