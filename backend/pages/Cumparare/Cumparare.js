@@ -1,11 +1,12 @@
-let listaFavorit = JSON.parse(localStorage.getItem("listaFavorit")) || [];
+let listaFavorit = JSON.parse(localStorage.getItem("listaFavorit")) || []; //declaram o lista pentru stelutele de favorit
 function initfavorite() {
+  // functie care initializeaza stelutele de favorit si asculta pentru click
   const starsArray = document.querySelectorAll(".fa-star");
 
   starsArray.forEach((star) => {
     listaFavorit.forEach((element) => {
       if (star.getAttribute("name") == element) {
-        console.log(star.getAttribute("name"));
+        //verificam daca avem in localStorage stelute deja puse la favorit
         star.classList.toggle("favourite");
       }
     });
@@ -13,40 +14,40 @@ function initfavorite() {
     star.addEventListener("click", function () {
       listaFavorit = JSON.parse(localStorage.getItem("listaFavorit")) || [];
       if (star.getAttribute("class") == "fa fa-star") {
-        console.log("s-a activat");
+        //daca o steluta este apasata pentru a marca favorit aceasta este pusa in localStorage
         listaFavorit.push(star.getAttribute("name"));
-        console.log(listaFavorit);
         localStorage.setItem("listaFavorit", JSON.stringify(listaFavorit));
       }
       if (star.getAttribute("class") == "fa fa-star favourite") {
-        console.log("s-a dezactivat");
+        //daca vrem sa scoatem o cryptomoneda de la favorit scoatem steluta din localStorage
         listaFavorit = arrayRemove(listaFavorit, star.getAttribute("name"));
-        console.log(listaFavorit);
         localStorage.setItem("listaFavorit", JSON.stringify(listaFavorit));
       }
 
-      star.classList.toggle("favourite");
+      star.classList.toggle("favourite"); //la click stelutei ii adaugam la class favourite care o face galbena
     });
   });
 }
+//functie pentru a scoate un element anume dintr-un array
 function arrayRemove(arr, value) {
   return arr.filter(function (ele) {
     return ele != value;
   });
 }
-//afiseaza cryptomonede
 
+//afiseaza cryptomonede
 document.getElementById("getCrypto").addEventListener("click", getCrypto);
-const container = document.querySelector("#CryptoCurrency");
-const subcontainer = document.querySelector("#subcontainer");
+const container = document.querySelector("#CryptoCurrency"); //container pentru toate cryptomonedele
+const subcontainer = document.querySelector("#subcontainer"); //container pentru fiecare cryptomoneda
 //functie care afiseaza cryptomonede in ordinea din json
 function getCrypto() {
-  fetch("/crypto")
+  fetch("/crypto") //apel get pentru a lua crypto.json
     .then(function (res) {
       return res.json();
     })
     .then(function (data) {
       data.forEach((crypto) => {
+        //cream un div care sa contina toate datele despre o cryptomoneda
         const tempCrypto = `<div id="crypto-div" data-id=${crypto.id}>  
             <ul class="crypto-ul">
             
@@ -67,28 +68,29 @@ function getCrypto() {
             
         </div><br>`;
 
-        subcontainer.insertAdjacentHTML("beforeend", tempCrypto);
+        subcontainer.insertAdjacentHTML("beforeend", tempCrypto); //adaugam in subcontainer div-ul cu toate informatiile despre cryptomoneda curenta
       });
 
-      initfavorite();
+      initfavorite(); //
     });
 
   let buttoncrypto = document.getElementById("getCrypto");
-  buttoncrypto.style.display = "none";
+  buttoncrypto.style.display = "none"; //dupa afisare ascundem butonul de afisare a cryptomonedelor
 }
 //functie care afiseaza cryptomonede dupa criteriul de sortare selectat
 function getCryptoCrescator() {
   var selectBox = document.getElementById("selectBox");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+  var selectedValue = selectBox.options[selectBox.selectedIndex].value; //luam valoarea din selectbox
 
   subcontainer.innerHTML = "";
 
-  fetch("/crypto")
+  fetch("/crypto") //apel get pentru a lua crypto.json
     .then(function (res) {
       return res.json();
     })
     .then(function (data) {
       let copielista = data;
+      //verificam in ce mod sa sortam lista cu cryptomonede
       if (selectedValue == "crescator") {
         copielista.sort((a, b) => {
           return a.value - b.value;
@@ -120,16 +122,14 @@ function getCryptoCrescator() {
             
         </div><br>`;
 
-        subcontainer.insertAdjacentHTML("beforeend", tempCrypto);
+        subcontainer.insertAdjacentHTML("beforeend", tempCrypto); //adaugam in subcontainer toate datele despre cryptomoneda
       });
       initfavorite();
     });
 }
 
-//afiseaza cat vrei sa cumperi
+//afiseaza cat vrei sa cumperi si cat costa volumul de monede selectat
 function updateTextInput(val, cost, id) {
   document.getElementById(id).value =
     "Numar Monede:" + val + " Cost Total:" + val * cost;
 }
-
-//localstorage pentru favorit

@@ -2,19 +2,37 @@
   {
     "id": 1,
     "name": "Bitcoin",
-    "value": 5500,
-    "available": 1200000
+    "value": 9900,
+    "available": 12000
   },
   {
     "id": 2,
     "name": "Ripple",
-    "value": 0.92,
+    "value": 0.21,
     "available": 250000000
   },
   {
     "id": 3,
     "name": "Ethereum",
-    "value": 1200,
-    "available": 7000000
+    "value": 200,
+    "available": 700000
+  },
+  {
+    "id": 4,
+    "name": "Tether",
+    "value": 1,
+    "available": 1200000
+  },
+  {
+    "id": 5,
+    "name": "Litecoin",
+    "value": 42.59,
+    "available": 250000
+  },
+  {
+    "id": 6,
+    "name": "Dogecoin",
+    "value": 0.002468,
+    "available": 70000000
   }
 ]
