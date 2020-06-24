@@ -50,7 +50,7 @@ app.get("/crypto", (req, res) => {
 app.get("*", (req, res) => {
   res.status(404).sendFile(__dirname + "/Error/Error.html");
 });
-//request post pentru inregistrarea unui nou utilizator
+//request post pentru inregistrarea unui nou utilizator(sa scriu ce contine obiectul trimis)
 app.post("/register", (req, res) => {
   console.log("req:" + JSON.stringify(req.body));
   //cream un obiect de tip user pentru a stoca si trimite informatiile in fisierul users.json
@@ -75,32 +75,59 @@ app.post("/register", (req, res) => {
   addNewUser(newUserData);
 
   res.json({
-    type: "success",
+    message: "success",
   });
 });
 //request de verificare date login
 app.post("/loginCheck", (req, res) => {
   const { username, password } = req.body;
+  //200 = ok
+  //401 = neautorizat
+  const statusCode = "200";
+  //ip
+  console.log(req.ip.split(":").pop());
+  const ip = req.ip.split(":").pop();
 
-  let message = { message: "Cont inexistent" };
+  let returnObject = { message: "Cont inexistent", statusCode: "401" };
   if (!username) {
-    message = { message: "Username lipsa" };
+    returnObject = { message: "Username lipsa", statusCode: "401" };
   }
   if (!password) {
-    message = { message: "Parola lipsa" };
+    returnObject = { message: "Parola lipsa", statusCode: "401" };
   }
 
   let userList = JSON.parse(fs.readFileSync("./databases/users.json", "utf8"));
 
-  let userExists = false;
-
   userList.forEach((user) => {
     if (user.username == username && user.password == password) {
-      message = { message: "Succes" };
+      let lastDate = user.lastLogin || null;
+
+      lastIp = user.ip || null;
+      user.ip = ip;
+      user.lastLogin = new Date();
+      user.lastLogin = user.lastLogin.toLocaleString();
+      user.visitNumber = user.visitNumber + 1 || 1;
+      fs.writeFile(
+        "./databases/users.json",
+        JSON.stringify(userList),
+        (err) => {
+          if (err) console.log("->> eroare: " + err);
+          console.log("-> success");
+        }
+      );
+      //daca numarul de vizite=1 atunci afisam mesaj de prima logare,
+      //altfel afisam ip,data si numarul de login-uri
+      returnObject = {
+        message:
+          user.visitNumber === 1
+            ? "Salut, te-ai logat azi pentru prima oara"
+            : `Salut, ${user.username}, ultima oara ai intrat de pe ip-ul ${lastIp} in ziua ${lastDate}.Ai vizitat site-ul de ${user.visitNumber} ori`,
+        statusCode: "200",
+      };
     }
   });
 
-  return res.json(message);
+  return res.json(returnObject);
 });
 
 app.listen(3000, () => {

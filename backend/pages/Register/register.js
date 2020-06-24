@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://192.168.0.69:3000";
 //functie care returneaza valoarea varstei selectate
 function updateTextInput(val) {
   document.getElementById("age").value = val;
@@ -38,6 +38,8 @@ async function getUserData() {
   };
 
   const newUserRegister = await postData("/register", newUser);
+  alert(newUserRegister.message);
+  window.location.href = "http://192.168.0.69:3000/Login";
 }
 //functie care trimite datele catre backend
 async function postData(path, data) {

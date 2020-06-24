@@ -47,3 +47,66 @@ function authCheck() {
     localStorage.removeItem("listaFavorit");
   }
 }
+//functie care face highlight pe pagina curenta
+function currentPage() {
+  let url = window.location.pathname;
+  url = url.substring(0, url.length - 1);
+  if (document.getElementById("/Cumparare")) {
+    document.getElementById("/Cumparare").classList.add("curent");
+  }
+  if (document.getElementById("/Vanzare")) {
+    document.getElementById("/Vanzare").classList.add("curent");
+  }
+  if (document.getElementById("/Home")) {
+    document.getElementById("/Home").classList.add("curent");
+  }
+  if (url == "/Login") {
+    document.getElementById("login-button").classList.add("curent");
+  }
+  if (document.getElementById("/Register")) {
+    document.getElementById("/Register").classList.add("curent");
+  }
+}
+currentPage();
+//functie care selecteaza marimea font-ului si o pune in local storage
+function schimbaFont() {
+  let scris_box = document.getElementById("scris");
+  let scris_curent = scris_box.options[scris_box.selectedIndex].value;
+  localStorage.setItem("font", scris_curent);
+  //daca vrem sa resetam font-ul
+  if (scris_curent == "Reset") {
+    localStorage.removeItem("font");
+    location.reload();
+  }
+  if (scris_curent == "font_mic") {
+    document.body.style.fontSize = "12px";
+  }
+  if (scris_curent == "font_mediu") {
+    document.body.style.fontSize = "18px";
+  }
+  if (scris_curent == "font_mare") {
+    document.body.style.fontSize = "24px";
+  }
+}
+//functie care actualizeaza font-ul conform selectiei salvate in local storage
+function actualizeazaFont() {
+  let actual = localStorage.getItem("font");
+  let select_nou = document.getElementById("scris");
+  if (actual == "font_mic") {
+    document.body.style.fontSize = "12px";
+  }
+  if (actual == "font_mediu") {
+    document.body.style.fontSize = "18px";
+  }
+  if (actual == "font_mare") {
+    document.body.style.fontSize = "24px";
+  }
+  //facem update la valoarea default de la select cu optiunea din local storage
+  for (var i, j = 0; (i = select_nou.options[j]); j++) {
+    if (i.value == actual) {
+      select_nou.selectedIndex = j;
+      break;
+    }
+  }
+}
+actualizeazaFont();

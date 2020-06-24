@@ -29,7 +29,7 @@
 
         <li>
             <div id="navbar_center">
-                <a href="/Home" class="active">
+                <a href="/Home" id="/Home">
                     <i class=" material-icons" id="icon_casa">Home</i>
                 </a>
             </div>
@@ -42,7 +42,15 @@
         </li>
 
     </ul>
+
     <div id="timp"></div>
+    <br>
+    <select id="scris" onchange="schimbaFont()">
+        <option value="font_mic">Font Mic</option>
+        <option value="font_mediu">Font Mediu</option>
+        <option value="font_mare">Font Mare</option>
+        <option value="Reset">Reset</option>
+    </select>
 
 
     <script src="meniu.js"></script>

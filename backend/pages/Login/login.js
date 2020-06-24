@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://192.168.0.69:3000";
 
 //Afiseaza ora actuala
 var myVar = setInterval(myTimer, 1000);
@@ -12,34 +12,29 @@ function myTimer() {
 async function getUserData() {
   //luam username
   let username = document.getElementById("username").value;
-  console.log(username);
+
   //luam password
   let password = document.getElementById("password").value;
-  console.log(password);
+
   //cream un obiect de login cu username si password
   const loginData = {
     username,
     password,
   };
+
   //verificam daca exista deja un utilizator cu datele introduse
   const loginResponse = await postData("/loginCheck", loginData);
   console.log(loginResponse);
   //in functie de raspunsul din backend verificam ce mesaj am primit
-  switch (loginResponse.message) {
-    case "Succes":
-      alert("succes");
+  switch (loginResponse.statusCode) {
+    case "200":
+      alert(loginResponse.message);
       localStorage.setItem("isLoggedIn", "True");
       localStorage.setItem("LoggedInUsername", username);
-      window.location.href = "http://localhost:3000/Home";
+      window.location.href = "http://192.168.0.69:3000/Home";
       break;
-    case "Cont inexistent":
-      alert("Cont inexistent");
-      break;
-    case "Username lipsa":
-      alert("Va rugam introduceti un username");
-      break;
-    case "Parola lipsa":
-      alert("Va rugam introduceti o parola");
+    case "401":
+      alert(loginResponse.message);
       break;
   }
 }
