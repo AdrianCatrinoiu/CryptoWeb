@@ -36,6 +36,16 @@ async function getUserData() {
     case "401":
       alert(loginResponse.message);
       break;
+    case "403":
+      alert(loginResponse.message);
+      break;
+    case "404":
+      alert(loginResponse.message);
+      document.getElementById("loginbtn").disabled = true;
+      setTimeout(function () {
+        document.getElementById("loginbtn").disabled = false;
+      }, 5000);
+      break;
   }
 }
 //functie care trimite datele luate spre backend
