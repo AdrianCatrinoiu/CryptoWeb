@@ -54,8 +54,8 @@ function currentPage() {
   if (document.getElementById("/Cumparare")) {
     document.getElementById("/Cumparare").classList.add("curent");
   }
-  if (document.getElementById("/Vanzare")) {
-    document.getElementById("/Vanzare").classList.add("curent");
+  if (document.getElementById("/Informatii")) {
+    document.getElementById("/Informatii").classList.add("curent");
   }
   if (document.getElementById("/Home")) {
     document.getElementById("/Home").classList.add("curent");
@@ -93,13 +93,13 @@ function actualizeazaFont() {
   let actual = localStorage.getItem("font");
   let select_nou = document.getElementById("scris");
   if (actual == "font_mic") {
-    document.body.style.fontSize = "12px";
+    document.body.style.fontSize = "14px";
   }
   if (actual == "font_mediu") {
-    document.body.style.fontSize = "18px";
+    document.body.style.fontSize = "22px";
   }
   if (actual == "font_mare") {
-    document.body.style.fontSize = "24px";
+    document.body.style.fontSize = "32px";
   }
   //facem update la valoarea default de la select cu optiunea din local storage
   for (var i, j = 0; (i = select_nou.options[j]); j++) {

@@ -54,3 +54,9 @@ td {
 #timp {
   float: right;
 }
+html,
+body {
+  background-image: url("../Pictures/cryptocurrency-677990.png");
+  background-size: 500px;
+  height: 100%;
+}

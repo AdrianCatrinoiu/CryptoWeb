@@ -39,8 +39,8 @@ app.get("/Cumparare", (req, res) => {
   res.sendFile(__dirname + "/pages/Cumparare/Cumparare.html");
 });
 //request get pentru pagina de vanzare
-app.get("/Vanzare", (req, res) => {
-  res.sendFile(__dirname + "/pages/Cumparare/Vanzare.html");
+app.get("/Informatii", (req, res) => {
+  res.sendFile(__dirname + "/pages/Informatii/Informatii.html");
 });
 //request get pentru pagina de register
 app.get("/Register", (req, res) => {
@@ -110,7 +110,7 @@ app.post("/loginCheck", async (req, res) => {
   //401 = gresit
   const statusCode = "200";
   //ip
-  //console.log(req.ip.split(":").pop());
+  console.log(req.ip.split(":").pop());
   const ip = req.ip.split(":").pop();
 
   returnObject = {

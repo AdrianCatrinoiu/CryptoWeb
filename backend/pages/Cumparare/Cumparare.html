@@ -22,7 +22,7 @@
                 </div>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="/Cumparare" id="/Cumparare">Cumparare</a>
-                    <a href="/Vanzare">Vanzare</a>
+                    <a href="/Informatii">Informatii</a>
                     <button onclick="darkMode()">Dark Mode</button>
                 </div>
             </div>
@@ -44,6 +44,8 @@
         </li>
 
     </ul>
+
+
     <div id="timp"></div>
     <br>
     <select id="scris" onchange="schimbaFont()">
@@ -52,17 +54,20 @@
         <option value="font_mare">Font Mare</option>
         <option value="Reset">Reset</option>
     </select>
-    <div class="divselect">
-        <select id="selectBox" onchange="getCryptoCrescator()">
-            <option value="crescator">Crescator</option>
-            <option value="descrescator">Descrescator</option>
-        </select>
-    </div>
-    <div id="CryptoCurrency">
-        <div id="subcontainer">
-
+    <div id="ContainerGetCrypto">
+        <div class="divselect">
+            <select id="selectBox" onchange="getCryptoCrescator()">
+                <option value="crescator">Crescator</option>
+                <option value="descrescator">Descrescator</option>
+            </select>
         </div>
-        <button id="getCrypto">Get Crypto</button>
+        <br>
+        <div id="CryptoCurrency">
+            <div id="subcontainer">
+
+            </div>
+            <button id="getCrypto">Get Crypto</button>
+        </div>
     </div>
 
 

@@ -31,9 +31,14 @@
   text-align: center;
 }
 
-#crypto-ul {
+.crypto-ul {
   text-align: center;
-  display: contents;
+
+  background-color: #aed6f1;
+  margin-top: 5%;
+  margin-right: 10%;
+  margin-left: 10%;
+  border-radius: 20px;
 }
 #listacrypto {
   text-align: center;
@@ -64,5 +69,21 @@
 .divselect {
   float: initial;
   text-align: center;
-  padding-top: 10%;
+}
+
+html,
+body {
+  background-image: url("../Pictures/cryptocurrency-677990.png");
+  background-size: 500px;
+  height: 100%;
+}
+#ContainerGetCrypto {
+  text-align: center;
+  background-color: blanchedalmond;
+
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-right: 20%;
+  margin-left: 20%;
+  border-radius: 20px;
 }

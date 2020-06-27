@@ -3,6 +3,8 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="../Home/meniu.css" />
+    <link rel="stylesheet" type="text/css" href="Informatii.css" />
+
 </head>
 
 
@@ -20,7 +22,7 @@
                 </div>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="/Cumparare">Cumparare</a>
-                    <a href="/Vanzare" id="/Vanzare" class="">Vanzare</a>
+                    <a href="/Informatii" id="/Informatii" class="">Informatii</a>
                     <button onclick="darkMode()">Dark Mode</button>
                 </div>
             </div>
@@ -34,8 +36,8 @@
                 </a>
             </div>
         </li>
-        <li>
-            <div id="navbar_right">
+        <li id="navbar_right">
+            <div>
                 <a href="/Login" id="login-button" onclick="authCheck()">Login</a>
                 <a href="/Register">Register</a>
             </div>
@@ -50,7 +52,38 @@
         <option value="font_mare">Font Mare</option>
         <option value="Reset">Reset</option>
     </select>
-
+    <div id="textInfo">
+        <h1>Despre noi:</h1>
+        <ol id="despreNoi">
+            <li>
+                Nume Contact: Catrinoiu Adrian
+            </li>
+            <br>
+            <li>
+                Telefon Contact: 0742761256
+            </li>
+            <br>
+            <li>
+                E-mail Contact: adrian.catrinoiu@my.fmi.unibuc.ro
+            </li>
+            <br>
+            <li>
+                Tipuri de monede puse spre vanzare: 6
+            </li>
+            <br>
+            <li>
+                Capital: $150.000.000
+            </li>
+            <br>
+            <li>
+                Disponibilitate: <ol>
+                    <li>24/7 Luni-Vineri</li>
+                    <br>
+                    <li>Inchis Sambata-Duminica</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
 
 
     <script src="../Home/meniu.js"></script>
